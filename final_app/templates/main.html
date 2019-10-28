@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet"><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<link href="https://getbootstrap.com/docs/3.3/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"><!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<link href="./static/style.css" rel="stylesheet">
+	<title>Финальный поисковик</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top" style="margin-bottom: 0px; padding: 0; z-index: 1; position: fixed;">
+		<div class="container" style="min-width: 80vw; max-width: 100%;">
+			<div class="navbar-header">
+				<div class="container logo" style="max-width: 100%;font-family: PT Sans;background: white;">
+					<div id="logo-text">Финальный поисковик</div>
+					<div id="motto">Найдётся всё. Но не сразу</div>
+				</div>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar">
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+	<nav class="fake navbar navbar-fixed-top" style="margin-bottom: 0px; padding: 0; z-index: 1;">
+		<div class="container" style="min-width: 80vw; max-width: 100%;">
+			<div class="navbar-header">
+				<div class="container logo" style="position: relative; max-width: 100%;">
+					<div id="logo-text">Финальный поисковик</div>
+					<div id="motto">Найдётся всё. Но не сразу</div>
+				</div>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar">
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+	<main role="main">
+		<form method="POST" action="/search">
+			<div class="row stoprow">
+				<div class="col-md-3 order-md-2">
+					<div class="header2">Выберите модель</div><br>
+					<div class="regular-text nulla" style="margin-right: 5px;margin-bottom: 5px;"><input type="radio" name="method" value="Tf-idf" checked> TF-IDF</div><div class="regular-text unus" style="margin-right: 5px;margin-bottom: 5px;"><input type="radio" name="method" value="BM25"> BM25</div><div class="regular-text duo" style="margin-right: 5px;margin-bottom: 5px;"><input type="radio" name="method" value="FastText"> FastText</div><div class="regular-text quinque" style="margin-right: 5px;margin-bottom: 5px;"><input type="radio" name="method" value="ELMO"> ELMO</div><div class="regular-text quattuor" style="margin-right: 5px;margin-bottom: 5px;"><input type="radio" name="method" value="BERT"> BERT</div></div>
+				<div class="col-md-9 order-md-1">
+					<div class="header2" style="width: 100%; margin-bottom: 10px;">Введите запрос: <input name="query" type="text" id="inputa" value="" placeholder="" style="width: calc(100% - 18ch); overflow-y:hidden;display: inline;"></div><br><div class="header2" style="text-align: center; width: 100%;"><input class="btn btn-success" type="submit" id="subm" value="Искать!" style="display: inline-block;"></div>
+					
+				</div>
+			</div>
+			
+			<div class="row stoprow">
+				<br>
+				
+			</div>
+</form><div class="row stoprow">
+{% if matches %}
+<table align="center" class="table table-hover regular-text" style="width: 80%;">
+  <thead class="thead-light">
+    <tr>
+      
+      <th scope="col" class="col">Документ</th>
+      <th scope="col">Оценка</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{% for match in matches %}
+    <tr>
+      <td>{{ match[0] }}</td>
+      <td>{{ match[1] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+</div>
+	</main>
+	<script src="./static/engine.js" type="text/javascript">
+	</script> <!-- Bootstrap core JavaScript
+    ================================================== -->
+	 <!-- Placed at the end of the document so the pages load faster -->
+	 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</body></html>

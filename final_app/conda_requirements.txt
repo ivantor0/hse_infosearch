@@ -1,0 +1,8 @@
+numpy==1.16.4
+pandas
+tensorflow==1.13.1
+tensorflow-gpu==1.13.1
+scipy
+gensim
+scikit-learn
+Flask
