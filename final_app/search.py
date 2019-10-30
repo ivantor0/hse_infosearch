@@ -24,14 +24,14 @@ from bert_serving.client import BertClient
 
 class Loader:
     def __init__(self, index_path="./index"):
-        self._models = ["tfidf", "bm25", "bert", "elmo"
-                         # "fasttext"
-                        ]
+        self._models = ["tfidf", "bm25", "fasttext", "elmo", "bert"]
         self.index_path = index_path
-        tf.reset_default_graph()
         self.models = self.load_models()
+        self._models_to_index = None
         if not self.check_index_dir():
             indexer = Indexer(index_path=self.index_path, models=self.models)
+            if not self._models_to_index:
+                self._models_to_index = self._models
             self._models += indexer.index(models=self._models_to_index)
 
     def check_index_dir(self):
@@ -73,7 +73,7 @@ class Loader:
 
     def load_models(self):
         models = {
-            # "fasttext": KeyedVectors.load("./models/fasttext/model.model"),
+            "fasttext": KeyedVectors.load("./models/fasttext/model.model"),
             "bert": BertClient(),
             "elmo": elmo_model()
         }
@@ -133,7 +133,7 @@ class Searcher:
 
     @timelogged("поиск TF-IDF")
     def _search_tfidf(self, query, top=10):
-        logging.log("Запрос: "query)
+        logging.log(logging.INFO, "Запрос: "+query)
         query = self._preprocess_string(query)
         vocab, index = self.index_structs["tfidf"]
         query_row = [[0] for _ in range(index.shape[1])]
@@ -148,7 +148,7 @@ class Searcher:
 
     @timelogged("поиск BM25")
     def _search_bm25(self, query, top=10):
-        logging.log("Запрос: "query)
+        logging.log(logging.INFO, "Запрос: "+query)
         query = self._preprocess_string(query)
         vocab, index = self.index_structs["bm25"]
         query_row = [[0] for _ in range(index.shape[1])]
@@ -163,7 +163,7 @@ class Searcher:
 
     @timelogged("поиск FastText")
     def _search_fasttext(self, query, top=10):
-        logging.log("Запрос: "query)
+        logging.log(logging.INFO, "Запрос: "+query)
         query = self._preprocess_string(query)
         _, index = self.index_structs["fasttext"]
         vec_size = self.models["fasttext"].vector_size
@@ -185,7 +185,7 @@ class Searcher:
 
     @timelogged("поиск ELMo")
     def _search_elmo(self, query, top=10):
-        logging.log("Запрос: "query)
+        logging.log(logging.INFO, "Запрос: "+query)
         query = self._preprocess_string(query)
         _, index = self.index_structs["elmo"]
         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)
@@ -200,10 +200,6 @@ class Searcher:
                 elmo_vectors = get_elmo_vectors(
                     sess, [query], self.models["elmo"].batcher, self.models["elmo"].sentence_character_ids,
                     self.models["elmo"].elmo_sentence_input)
-
-                logging.log(time.time() - start)
-                logging.log('ELMo embeddings for your input are ready')
-                logging.log('Tensor shape:', elmo_vectors.shape)
 
                 # Due to batch processing, the above code produces for each sentence
                 # the same number of token vectors, equal to the length of the longest sentence
@@ -223,11 +219,12 @@ class Searcher:
 
                 match_dict = {self.orig_strings[i]: 1 - score for i, score in enumerate(match)}
                 match = tuple(sorted(match_dict.items(), key=lambda x: x[1])[:top])
+                print(query)
                 return match
 
     @timelogged("поиск BERT")
     def _search_bert(self, query, top=10):
-        logging.log("Запрос: "query)
+        logging.log(logging.INFO, "Запрос: "+query)
         if not query:
             entity = np.array([0] * 728)
         else:

@@ -83,8 +83,8 @@ class Indexer:
             "tfidf": TFIDF(),
             "bm25": BM25(),
             "fasttext": FastText(self.models["fasttext"]),
-            "elmo": ELMo(self.models["elmo"])
-            # "bert": BERT(self.models["bert"])
+            "elmo": ELMo(self.models["elmo"]),
+            "bert": BERT(self.models["bert"])
         }
 
     def index(self, models):
@@ -258,6 +258,7 @@ class ELMo:
 
     @timelogged("индексация ELMo")
     def process(self, docs, index_path):
+        docs = docs
         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)
 
         with tf.Session(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True,
@@ -268,7 +269,8 @@ class ELMo:
 
                 start = time.time()
                 vectors = []
-                bs, be = 0, 100
+                batch_size = 50
+                bs, be = 0, batch_size
 
                 while be <= len(docs):
                     batch = docs[bs:be]
@@ -285,17 +287,13 @@ class ELMo:
                     # Let's make a version without these redundant vectors:
 
                     cropped_vectors = []
-                    for vect, sent in zip(elmo_vectors, docs):
+                    for vect, sent in zip(elmo_vectors, batch):
                         cropped_vector = vect[:len(sent), :]
                         cropped_vectors.append(cropped_vector)
 
                     vectors += cropped_vectors
-                    bs += 100
-                    be += 100
-
-            logging.log(time.time() - start)
-            logging.log('ELMo embeddings for your input are ready')
-            # logging.log('Tensor shape:', elmo_vectors.shape)
+                    bs += batch_size
+                    be += batch_size
 
             index = np.array([np.sum(v, axis=0) / len(v) for v in vectors])
             struct = [{}, index]
@@ -322,12 +320,15 @@ class BERT:
             for idx in nulls:
                 docs[idx] = "."
             index = self.model.encode(docs)
+            with open(os.path.join(index_path, self.label+".pickle"), "wb") as pfile:
+                pickle.dump(index, pfile)
+            index = index.copy()
             for idx in nulls:
-                index[idx] = np.array([0] * 728)
+                index[idx] = np.array([0] * 768)
             struct = [{}, index]
             with open(os.path.join(index_path, self.label+".pickle"), "wb") as pfile:
                 pickle.dump(struct, pfile)
             return True
         except Exception as e:
-            print("log")
+            print(e)
             return False

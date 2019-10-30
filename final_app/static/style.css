@@ -360,7 +360,7 @@ footer {
 	max-width: 2096px;
 }
 #inputa {
-	font-family: PT Serif;
+	font-family: PT Sans;
 	width: 100%;
 	border-width: 0.5px;
 	border-radius: 4px;
@@ -368,7 +368,7 @@ footer {
 	overflow: hidden;
 }
 #resulta {
-	font-family: PT Serif;
+	font-family: PT Sans;
 	width: 100%;
 	padding-top: 2.5px;
 	padding-left: 2.5px;

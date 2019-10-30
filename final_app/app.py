@@ -1,3 +1,4 @@
+import sys
 import logging
 from search import Searcher
 from flask import Flask, request, render_template
