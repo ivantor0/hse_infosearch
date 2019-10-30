@@ -26,7 +26,7 @@ sudo chmod a+r /usr/local/cuda-10.0/lib64/libcudnn*
 ```
 
 # Индексация и запуск сайта
-В код входят модули для работы веб-версии, которые интегрированы с индексацией. Для запуска индексации по умолчанию нужно положить [файл](https://www.kaggle.com/loopdigga/quora-question-pairs-russian) отсюда в папку ./index, модель [FastText](http://vectors.nlpl.eu/repository/11/181.zip) распаковать в папку ./models/fasttext, модель ELMo(http://vectors.nlpl.eu/repository/11/196.zip) положить в папку ./models/elmo и модель [BERT](http://files.deeppavlov.ai/deeppavlov_data/bert/rubert_cased_L-12_H-768_A-12_v2.tar.gz) положить в папку ./models/rubert. Для работы программа должна связаться с локальным сервером bert-serving-server, которую можно запустить параллельным процессом, например, так:
+В код входят модули для работы веб-версии, которые интегрированы с индексацией. Для запуска индексации по умолчанию нужно положить [файл](https://www.kaggle.com/loopdigga/quora-question-pairs-russian) отсюда в папку ./index, модель [FastText](http://vectors.nlpl.eu/repository/11/181.zip) распаковать в папку ./models/fasttext, модель [ELMo](http://vectors.nlpl.eu/repository/11/196.zip) положить в папку ./models/elmo и модель [BERT](http://files.deeppavlov.ai/deeppavlov_data/bert/rubert_cased_L-12_H-768_A-12_v2.tar.gz) положить в папку ./models/rubert. Для работы программа должна связаться с локальным сервером bert-serving-server, которую можно запустить параллельным процессом, например, так:
 ```
 tmux
 source activate infosearch
