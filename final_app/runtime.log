@@ -1,0 +1,90 @@
+INFO:root:Выполняется загрузка модели ELMo...
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:522: LSTMCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.LSTMCell, and will be replaced by that in Tensorflow 2.0.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:567: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:626: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Готово: загрузка модели ELMo  (за 5s 704ms)
+INFO:root:Выполняется препроцессинг коллекции...
+INFO:root:Готово: препроцессинг коллекции  (за 1m 1s 873ms)
+INFO:gensim.utils:loading Word2VecKeyedVectors object from ./models/fasttext/model.model
+DEBUG:smart_open.smart_open_lib:{'transport_params': {}, 'ignore_ext': False, 'opener': None, 'closefd': True, 'newline': None, 'errors': None, 'encoding': None, 'buffering': -1, 'mode': 'rb', 'uri': './models/fasttext/model.model'}
+INFO:gensim.utils:loading vectors_vocab from ./models/fasttext/model.model.vectors_vocab.npy with mmap=None
+INFO:gensim.utils:loading vectors_ngrams from ./models/fasttext/model.model.vectors_ngrams.npy with mmap=None
+INFO:gensim.utils:loading vectors from ./models/fasttext/model.model.vectors.npy with mmap=None
+INFO:gensim.utils:setting ignored attribute vectors_vocab_norm to None
+INFO:gensim.utils:setting ignored attribute buckets_word to None
+INFO:gensim.utils:setting ignored attribute vectors_norm to None
+INFO:gensim.utils:setting ignored attribute vectors_ngrams_norm to None
+INFO:gensim.utils:loaded ./models/fasttext/model.model
+INFO:root:Выполняется индексация ELMo...
+INFO:root:Выполняется загрузка модели ELMo...
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:522: LSTMCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.LSTMCell, and will be replaced by that in Tensorflow 2.0.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:567: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:626: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Готово: загрузка модели ELMo  (за 5s 959ms)
+INFO:root:Выполняется препроцессинг коллекции...
+INFO:root:Готово: препроцессинг коллекции  (за 1m 4s 374ms)
+INFO:gensim.utils:loading Word2VecKeyedVectors object from ./models/fasttext/model.model
+DEBUG:smart_open.smart_open_lib:{'transport_params': {}, 'ignore_ext': False, 'opener': None, 'closefd': True, 'newline': None, 'errors': None, 'encoding': None, 'buffering': -1, 'mode': 'rb', 'uri': './models/fasttext/model.model'}
+INFO:gensim.utils:loading vectors_vocab from ./models/fasttext/model.model.vectors_vocab.npy with mmap=None
+INFO:gensim.utils:loading vectors_ngrams from ./models/fasttext/model.model.vectors_ngrams.npy with mmap=None
+INFO:gensim.utils:loading vectors from ./models/fasttext/model.model.vectors.npy with mmap=None
+INFO:gensim.utils:setting ignored attribute vectors_vocab_norm to None
+INFO:gensim.utils:setting ignored attribute buckets_word to None
+INFO:gensim.utils:setting ignored attribute vectors_norm to None
+INFO:gensim.utils:setting ignored attribute vectors_ngrams_norm to None
+INFO:gensim.utils:loaded ./models/fasttext/model.model
+INFO:root:Выполняется загрузка модели ELMo...
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:522: LSTMCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.LSTMCell, and will be replaced by that in Tensorflow 2.0.
+WARNING:tensorflow:From /home/isikus/final_app/bilm/model.py:567: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+WARNING:tensorflow:From /home/isikus/anaconda3/envs/infosearch/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:626: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Готово: загрузка модели ELMo  (за 3s 135ms)
+INFO:root:Выполняется препроцессинг коллекции...
+INFO:root:Готово: препроцессинг коллекции  (за 59s 426ms)
+INFO:gensim.utils:loading Word2VecKeyedVectors object from ./models/fasttext/model.model
+DEBUG:smart_open.smart_open_lib:{'transport_params': {}, 'ignore_ext': False, 'opener': None, 'closefd': True, 'newline': None, 'errors': None, 'encoding': None, 'buffering': -1, 'mode': 'rb', 'uri': './models/fasttext/model.model'}
+INFO:gensim.utils:loading vectors_vocab from ./models/fasttext/model.model.vectors_vocab.npy with mmap=None
+INFO:gensim.utils:loading vectors_ngrams from ./models/fasttext/model.model.vectors_ngrams.npy with mmap=None
+INFO:gensim.utils:loading vectors from ./models/fasttext/model.model.vectors.npy with mmap=None
+INFO:gensim.utils:setting ignored attribute vectors_vocab_norm to None
+INFO:gensim.utils:setting ignored attribute buckets_word to None
+INFO:gensim.utils:setting ignored attribute vectors_norm to None
+INFO:gensim.utils:setting ignored attribute vectors_ngrams_norm to None
+INFO:gensim.utils:loaded ./models/fasttext/model.model
+INFO:root:Выполняется индексация TF-IDF...
+INFO:root:Готово: индексация TF-IDF  (за 3s 606ms)
+INFO:root:Выполняется индексация BM25...
+INFO:root:Готово: индексация BM25  (за 4s 248ms)
+INFO:root:Выполняется индексация FastText...
+INFO:root:Готово: индексация FastText  (за 1m 15s 253ms)
+INFO:root:Выполняется индексация ELMo...
+INFO:root:Готово: индексация ELMo  (за 4h 18m 41s 830ms)
+INFO:root:Выполняется индексация BERT...
+INFO:root:Готово: индексация BERT  (за 4h 47m 23s 844ms)
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
