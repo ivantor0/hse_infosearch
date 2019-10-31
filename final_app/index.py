@@ -180,7 +180,7 @@ class BM25:
         l = len(D)
 
         return IDF * TF * (self.k + 1) / \
-               TF + self.k * (1 - self.b + self.b * (l / self.avgdl))
+               (TF + self.k * (1 - self.b + self.b * (l / self.avgdl)))
 
     @timelogged("индексация BM25")
     def process(self, docs, index_path):
